@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>RSA Шифратор</title>
+</head>
+<body>
+  <h1>RSA Шифратор/Дешифратор</h1>
+  <form method="post">
+    <textarea name="message" rows="4" cols="50" placeholder="Сообщение или зашифрованный текст"></textarea><br><br>
+
+    <textarea name="public_key" rows="5" cols="70" placeholder="Открытый ключ (base64)">
+{{ public_pem }}</textarea><br>
+
+    <textarea name="private_key" rows="5" cols="70" placeholder="Закрытый ключ (base64)">
+{{ private_pem }}</textarea><br><br>
+
+    <button type="submit" name="action" value="generate">Сгенерировать ключи</button>
+    <button type="submit" name="action" value="encrypt">Зашифровать</button>
+    <button type="submit" name="action" value="decrypt">Расшифровать</button>
+  </form>
+
+  {% if result %}
+    <h2>Результат:</h2>
+    <pre>{{ result }}</pre>
+  {% endif %}
+
+  {% if error %}
+    <h2 style="color:red;">{{ error }}</h2>
+  {% endif %}
+</body>
+</html>
